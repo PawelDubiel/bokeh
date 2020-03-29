@@ -10,6 +10,7 @@ import json
 import re
 from os.path import join
 from subprocess import CalledProcessError
+from typing import List
 
 # External imports
 from packaging.version import Version as V
@@ -122,12 +123,9 @@ def update_changelog(config: Config) -> None:
 
 
 def update_bokehjs_versions(config: Config) -> None:
+    regex_filenames: List[str] = []
 
-    regex_filenames = [
-        "bokehjs/src/lib/version.ts",
-    ]
-
-    json_filenames = [
+    json_filenames: List[str] = [
         "bokehjs/package.json",
         "bokehjs/package-lock.json",
     ]
